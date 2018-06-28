@@ -2709,6 +2709,6 @@ export default {
   searchTerm: '',
   repos: mockRepos || {},
   selectedOrg: 'facebook',
-  selectedRepo: '',
+  selectedRepo: 'sparky-js',
   errorMessage: '',
 };
