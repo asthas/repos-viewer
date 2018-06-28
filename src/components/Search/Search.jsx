@@ -36,7 +36,7 @@ const Search = ({
       name="search"
       id="search"
       type="search"
-      placeholder="Search Transactions"
+      placeholder="Search repos"
       onChange={(e) => updateSearchTerm(e.target.value)}
       value={searchTerm}
     />
