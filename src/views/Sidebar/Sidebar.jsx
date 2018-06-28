@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import RepoList from '../../components/RepoList';
+import RepoList from "../../components/RepoList";
 
 const Wrapper = styled.div`
   background: white;

@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import Contributor from '../Contributor';
+import React from "react";
+import styled from "styled-components";
+import Contributor from "../Contributor";
 
 const Wrapper = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const TitleWrapper = styled.div`
-  color: #0336FF;
+  color: #0336ff;
   font-size: 1.17em;
   font-weight: bold;
 `;
@@ -52,44 +52,30 @@ class Contributors extends React.Component {
     const {
       selectedRepo,
       selectedPage,
-      contributors: {
-        loaded,
-        loading,
-      },
+      contributors: { loaded, loading },
       updateRepoContributors
     } = this.props;
 
     if (!loaded && !loading) {
       updateRepoContributors({
         repo: selectedRepo,
-        page: selectedPage,
+        page: selectedPage
       });
     }
   }
 
   renderList(list) {
     return list.map(contributor => (
-      <Contributor
-        {...contributor}
-        key={contributor.id}
-      />
+      <Contributor {...contributor} key={contributor.id} />
     ));
   }
 
   renderLoading() {
-    return (
-      <InfoWrapper>
-        Loading "contributors"
-      </InfoWrapper>
-    )
+    return <InfoWrapper>Loading "contributors"</InfoWrapper>;
   }
 
   renderNoResults() {
-    return (
-      <InfoWrapper>
-        No contributors found
-      </InfoWrapper>
-    )
+    return <InfoWrapper>No contributors found</InfoWrapper>;
   }
 
   renderView(loading, loaded, list) {
@@ -114,12 +100,8 @@ class Contributors extends React.Component {
     const {
       selectedRepo,
       selectedPage,
-      contributors: {
-        loading,
-        loaded,
-        list,
-      },
-      updateRepoContributors,
+      contributors: { loading, loaded, list },
+      updateRepoContributors
     } = this.props;
 
     return (
@@ -132,8 +114,9 @@ class Contributors extends React.Component {
           <NavIconWrapper
             title="Previous"
             className="material-icons md-48"
-            onClick={
-              () => selectedPage > 1 && updateRepoContributors({
+            onClick={() =>
+              selectedPage > 1 &&
+              updateRepoContributors({
                 repo: selectedRepo,
                 page: selectedPage - 1
               })
@@ -144,11 +127,12 @@ class Contributors extends React.Component {
           <NavIconWrapper
             className="material-icons md-48"
             title="Next"
-            onClick={
-              () => updateRepoContributors({
+            onClick={() =>
+              updateRepoContributors({
                 repo: selectedRepo,
                 page: selectedPage + 1
-              })}
+              })
+            }
           >
             keyboard_arrow_right
           </NavIconWrapper>

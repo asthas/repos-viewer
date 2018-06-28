@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.a`
   display: flex;
@@ -15,12 +15,9 @@ const AvatarWrapper = styled.img`
   height: 100px;
   width: 100px;
   border-radius: 50%;
-`
+`;
 
-const Contributor = ({
-  name,
-  avatar
-}) => (
+const Contributor = ({ name, avatar }) => (
   <Wrapper href={`https://github.com/${name}`} target="_blank">
     <AvatarWrapper src={avatar} alt={`${name}'s profile photo`} />
     <div>{name}</div>

@@ -1,22 +1,23 @@
-import { ajax } from 'rxjs/ajax';
-import { of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
-import normalizeReposResponse from './normalize-repos-response';
-import normalizeContributorsRepsonse from './normalize-contributors-response';
+import { ajax } from "rxjs/ajax";
+import { of } from "rxjs";
+import { map, catchError } from "rxjs/operators";
+import normalizeReposResponse from "./normalize-repos-response";
+import normalizeContributorsRepsonse from "./normalize-contributors-response";
 
-const baseUrl = 'https://api.github.com';
+const baseUrl = "https://api.github.com";
 
-const fetchData = (url) => ajax({
-  crossDomain: true,
-  responseType: 'json',
-  url
-}).pipe(map(res => res.response));
+const fetchData = url =>
+  ajax({
+    crossDomain: true,
+    responseType: "json",
+    url
+  }).pipe(map(res => res.response));
 
 export default class Api {
   static repos({ org }) {
     return fetchData(`${baseUrl}/orgs/${org}/repos?per_page=100`).pipe(
       map(normalizeReposResponse),
-      catchError(() => of(null)),
+      catchError(() => of(null))
     );
   }
 
@@ -26,6 +27,6 @@ export default class Api {
     ).pipe(
       map(normalizeContributorsRepsonse),
       catchError(() => of(null))
-    )
+    );
   }
 }

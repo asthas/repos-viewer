@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "next": "^6.1.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
@@ -14,11 +15,13 @@
     "styled-components": "^3.3.3"
   },
   "scripts": {
+    "pretty": "prettier --write src/**/*.{js,jsx}",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "prettier": "1.13.6",
     "redux-devtools-extension": "^2.13.5"
   }
 }

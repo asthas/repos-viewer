@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   margin-left: 24px;
@@ -24,10 +24,7 @@ const SearchIconWrapper = styled.i`
   margin-right: 8px;
 `;
 
-const Search = ({
-  searchTerm,
-  updateSearchTerm
-}) => (
+const Search = ({ searchTerm, updateSearchTerm }) => (
   <Wrapper>
     <SearchIconWrapper className="material-icons md-48">
       search
@@ -37,7 +34,7 @@ const Search = ({
       id="search"
       type="search"
       placeholder="Search repos"
-      onChange={(e) => updateSearchTerm(e.target.value)}
+      onChange={e => updateSearchTerm(e.target.value)}
       value={searchTerm}
     />
   </Wrapper>

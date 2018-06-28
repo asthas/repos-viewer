@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import SearchContainer from '../../components/Search';
+import SearchContainer from "../../components/Search";
 
 const Wrapper = styled.div`
   height: 64px;
-  background-color: #0336FF;
+  background-color: #0336ff;
   position: relative;
   display: flex;
   align-items: center;
@@ -19,13 +19,9 @@ const OrgWrapper = styled.span`
   font-size: 1.5em;
 `;
 
-const Header = ({
-  selectedOrg
-}) => (
+const Header = ({ selectedOrg }) => (
   <Wrapper>
-    <OrgWrapper>
-      {selectedOrg}
-    </OrgWrapper>
+    <OrgWrapper>{selectedOrg}</OrgWrapper>
     <SearchContainer />
   </Wrapper>
 );

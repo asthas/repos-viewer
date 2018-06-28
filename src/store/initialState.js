@@ -1,7 +1,7 @@
 export default {
-  searchTerm: '',
+  searchTerm: "",
   repos: {},
-  selectedOrg: 'facebook',
-  selectedRepo: '',
-  errorMessage: '',
+  selectedOrg: "facebook",
+  selectedRepo: "",
+  errorMessage: ""
 };

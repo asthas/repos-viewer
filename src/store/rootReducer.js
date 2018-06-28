@@ -1,96 +1,81 @@
-import initialState from './initialState';
+import initialState from "./initialState";
 
 export const actionTypes = {
-  updateSearchTerm: 'UPDATE_SEARCH_TERM',
-  updateOrg: 'UPDATE_ORG',
-  updateRepos: 'UPDATE_REPOS',
-  updateReposSuccess: 'UPDATE_REPOS_SUCCESS',
-  updateReposFailure: 'UPDATE_REPOS_FAILURE',
-  updateSelectedRepo: 'UPDATE_SELECTED_REPO',
-  updateRepoContributors: 'UPDATE_REPO_CONTRIBUTORS',
-  updateRepoContributorsSuccess: 'UPDATE_REPO_CONTRIBUTORS_SUCCESS',
-  updateRepoContributorsFailure: 'UPDATE_REPO_CONTRIBUTORS_FAILURE',
-}
+  updateSearchTerm: "UPDATE_SEARCH_TERM",
+  updateOrg: "UPDATE_ORG",
+  updateRepos: "UPDATE_REPOS",
+  updateReposSuccess: "UPDATE_REPOS_SUCCESS",
+  updateReposFailure: "UPDATE_REPOS_FAILURE",
+  updateSelectedRepo: "UPDATE_SELECTED_REPO",
+  updateRepoContributors: "UPDATE_REPO_CONTRIBUTORS",
+  updateRepoContributorsSuccess: "UPDATE_REPO_CONTRIBUTORS_SUCCESS",
+  updateRepoContributorsFailure: "UPDATE_REPO_CONTRIBUTORS_FAILURE"
+};
 
 export const actions = {
-  updateSearchTerm: (payload) => ({
+  updateSearchTerm: payload => ({
     type: actionTypes.updateSearchTerm,
     payload
   }),
 
-  updateOrg: (payload) => ({
+  updateOrg: payload => ({
     type: actionTypes.updateOrg,
     payload
   }),
 
-  updateReposSuccess: (payload) => ({
+  updateReposSuccess: payload => ({
     type: actionTypes.updateReposSuccess,
     payload
   }),
 
-  updateReposFailure: (payload) => ({
+  updateReposFailure: payload => ({
     type: actionTypes.updateReposFailure,
     payload
   }),
 
-  updateSelectedRepo: (payload) => ({
+  updateSelectedRepo: payload => ({
     type: actionTypes.updateSelectedRepo,
-    payload,
+    payload
   }),
 
-  updateRepoContributors: (payload) => ({
+  updateRepoContributors: payload => ({
     type: actionTypes.updateRepoContributors,
     payload
   }),
 
-  updateRepoContributorsSuccess: (payload) => ({
+  updateRepoContributorsSuccess: payload => ({
     type: actionTypes.updateRepoContributorsSuccess,
     payload
   }),
 
-  updateRepoContributorsFailure: (payload) => ({
+  updateRepoContributorsFailure: payload => ({
     type: actionTypes.updateRepoContributorsFailure,
     payload
-  }),
-}
+  })
+};
 
 const actionHandler = {
-  [actionTypes.updateSearchTerm]: (
-    state,
-    action
-  ) => ({
+  [actionTypes.updateSearchTerm]: (state, action) => ({
     ...state,
-    searchTerm: action.payload,
+    searchTerm: action.payload
   }),
 
-  [actionTypes.updateOrg]: (
-    state,
-    action
-  ) => ({
+  [actionTypes.updateOrg]: (state, action) => ({
     ...state,
     selectedOrg: action.payload
   }),
 
-  [actionTypes.updateReposSuccess]: (
-    state,
-    action
-  ) => ({
+  [actionTypes.updateReposSuccess]: (state, action) => ({
     ...state,
     repos: action.payload
   }),
 
-  [actionTypes.updateReposFailure]: (
-    state,
-    action
-  ) => ({
+  [actionTypes.updateReposFailure]: (state, action) => ({
     ...state,
     errorMessage: action.payload
   }),
 
-  [actionTypes.updateSelectedRepo]: (
-    state,
-    action
-  ) => ({
+  [actionTypes.updateSelectedRepo]: (state, action) => ({
     ...state,
     selectedRepo: action.payload
   }),
@@ -112,10 +97,10 @@ const actionHandler = {
             [page]: {
               loaded: false,
               loading: true,
-              list: [],
+              list: []
             }
           }
-        },
+        }
       }
     }
   }),
@@ -137,10 +122,10 @@ const actionHandler = {
             [page]: {
               loaded: true,
               loading: false,
-              list: contributors,
+              list: contributors
             }
           }
-        },
+        }
       }
     }
   }),
@@ -161,15 +146,15 @@ const actionHandler = {
             [page]: {
               loaded: false,
               loading: false,
-              list: [],
+              list: []
             }
           }
-        },
-      },
+        }
+      }
     },
-    errorMessage,
+    errorMessage
   })
-}
+};
 
 const rootReducer = (state = initialState, action) => {
   const handler = actionHandler[action.type];
@@ -177,6 +162,6 @@ const rootReducer = (state = initialState, action) => {
     return handler(state, action);
   }
   return state;
-}
+};
 
 export default rootReducer;

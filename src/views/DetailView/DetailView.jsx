@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from  'styled-components';
-import Contributors from '../../components/Contributors';
+import React from "react";
+import styled from "styled-components";
+import Contributors from "../../components/Contributors";
 
 const Wrapper = styled.div`
   height: 100%;
@@ -33,14 +33,14 @@ const TitleWrapper = styled.div`
   a {
     text-decoration: none;
   }
-`
+`;
 
 const DescriptionWrapper = styled.code`
   background-color: #f6f8fa;
   padding: 16px;
   font-weight: 400;
   margin-bottom: 16px;
-`
+`;
 
 const InfoListWrapper = styled.div`
   display: flex;
@@ -51,11 +51,10 @@ const InfoTagWrapper = styled.div`
   margin: 8px 4px;
   padding: 8px;
   background-color: #f6f8fa;
-  border: 1px solid #0336FF;
+  border: 1px solid #0336ff;
   border-radius: 20px;
   font-size: 0.8em;
 `;
-
 
 const DetailView = ({
   selectedRepo,
@@ -69,42 +68,39 @@ const DetailView = ({
     issues,
     contributors,
     loaded
-  },
+  }
 }) => {
   if (!selectedRepo) {
-    return (
-      <CenteredWrapper>
-        Select "repo" from sidebar
-      </CenteredWrapper>
-    )
+    return <CenteredWrapper>Select "repo" from sidebar</CenteredWrapper>;
   }
 
   if (!loaded) {
-    return (
-      <CenteredWrapper>
-        Loading info for "{selectedRepo}"
-      </CenteredWrapper>
-    )
+    return <CenteredWrapper>Loading info for "{selectedRepo}"</CenteredWrapper>;
   }
 
   const infoList = [
-    { title: 'Watchers', value: watchers },
-    { title: 'Stars', value: stars },
-    { title: 'Forks', value: forks },
-    { title: 'Issues', value: issues },
-  ]
+    { title: "Watchers", value: watchers },
+    { title: "Stars", value: stars },
+    { title: "Forks", value: forks },
+    { title: "Issues", value: issues }
+  ];
 
   return (
     <Wrapper>
       <WrapperHeader>
         <InfoWrapper>
-          <TitleWrapper><a target="_blank" href={url}>{selectedRepo}</a></TitleWrapper>
+          <TitleWrapper>
+            <a target="_blank" href={url}>
+              {selectedRepo}
+            </a>
+          </TitleWrapper>
           <DescriptionWrapper>{description}</DescriptionWrapper>
         </InfoWrapper>
         <InfoListWrapper>
           {infoList.map(({ title, value }) => (
             <InfoTagWrapper key={title}>
-              <strong>{`${title}: `}</strong>{value}
+              <strong>{`${title}: `}</strong>
+              {value}
             </InfoTagWrapper>
           ))}
         </InfoListWrapper>

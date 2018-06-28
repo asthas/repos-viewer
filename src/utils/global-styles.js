@@ -1,4 +1,4 @@
-import { injectGlobal } from 'styled-components';
+import { injectGlobal } from "styled-components";
 
 const normalizeCSS = () => {
   injectGlobal`
@@ -177,8 +177,8 @@ const normalizeCSS = () => {
     [hidden] {
       display: none;
     }
-  `
-}
+  `;
+};
 
 const customCSS = () => {
   injectGlobal`
@@ -190,12 +190,12 @@ const customCSS = () => {
       height: 100%;
       width: 100%;
     }
-  `
-}
+  `;
+};
 
 const addGlobalStyles = () => {
   normalizeCSS();
   customCSS();
-}
+};
 
 export default addGlobalStyles;

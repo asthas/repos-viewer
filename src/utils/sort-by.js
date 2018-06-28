@@ -1,4 +1,3 @@
-const sortBy =
-  (prop) => (a, b) => a[prop] - b[prop]
+const sortBy = prop => (a, b) => a[prop] - b[prop];
 
-export default sortBy
+export default sortBy;
