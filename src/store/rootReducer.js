@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import initialState from './initialState';
 
 const actionTypes = {
   updateSearchTerm: 'UPDATE_SEARCH_TERM',
@@ -12,7 +13,7 @@ const actionTypes = {
   updateRepoInfoFailure: 'UPDATE_REPO_INFO_FAILURE',
 }
 
-const actions = {
+export const actions = {
   updateSearchTerm: (payload) => ({
     type: actionTypes.updateSearchTerm,
     payload
@@ -108,13 +109,13 @@ const actionHandler = {
   [actionTypes.updateRepoInfoFailure]: (
     state,
     action
-  ) = ({
+  ) => ({
     ...state,
     errorMessage: action.payload
   })
 }
 
-const rootReducer = (state, action) => {
+const rootReducer = (state = initialState, action) => {
   const handler = actionHandler[action.type];
   if (handler) {
     return handler(state, action);

@@ -11,9 +11,12 @@ const Wrapper = styled.div`
   box-shadow: 0 2px 4px 0 rgba(27, 20, 100, 0.3);
 `;
 
-const Header = () => (
+const Header = ({
+  searchTerm,
+  selectedOrg
+}) => (
   <Wrapper>
-    Facebook Repos
+    {selectedOrg}
   </Wrapper>
 );
 
