@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import SearchContainer from '../../components/Search';
+
 const Wrapper = styled.div`
   height: 64px;
   background-color: '#e5ece6';
@@ -11,12 +13,18 @@ const Wrapper = styled.div`
   box-shadow: 0 2px 4px 0 rgba(27, 20, 100, 0.3);
 `;
 
+const OrgWrapper = styled.h2`
+  flex: 1;
+`;
+
 const Header = ({
-  searchTerm,
   selectedOrg
 }) => (
   <Wrapper>
-    {selectedOrg}
+    <OrgWrapper>
+      {selectedOrg}
+    </OrgWrapper>
+    <SearchContainer />
   </Wrapper>
 );
 

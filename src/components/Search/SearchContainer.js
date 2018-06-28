@@ -1,19 +1,19 @@
 import { connect } from 'react-redux';
 
 import { actions } from '../../store/rootReducer';
-import Header from './Header';
+import Search from './Search';
 
 const mapStateToProps = (state) => ({
-  selectedOrg: state.selectedOrg,
+  searchTerm: state.searchTerm,
 })
 
 const mapDispatchToProps = {
-  updateOrg: actions.updateOrg,
+  updateSearchTerm: actions.updateSearchTerm,
 }
 
-const HeaderContainer = connect(
+const SearchContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(Search);
 
-export default HeaderContainer;
+export default SearchContainer;
