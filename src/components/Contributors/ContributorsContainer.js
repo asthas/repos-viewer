@@ -6,7 +6,7 @@ const mapStateToProps = (state) => {
   const { repos, selectedRepo } = state;
   const contributors = repos[selectedRepo].contributors || {};
   const selectedPage = contributors.selectedPage || 1;
-  const contributorsInfo = contributors[selectedPage] || {};
+  const contributorsInfo = contributors.pages[selectedPage] || {};
 
   return {
     selectedRepo,

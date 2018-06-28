@@ -70,14 +70,23 @@ const Contributors = ({
         <NavIconWrapper
           title="Previous"
           className="material-icons md-48"
-          onClick={() => updateRepoContributors({ name: selectedRepo, page: selectedPage - 1 })}
+          onClick={
+            () => selectedPage > 1 && updateRepoContributors({
+              name: selectedRepo,
+              page: selectedPage - 1
+            })
+          }
         >
           keyboard_arrow_left
         </NavIconWrapper>
         <NavIconWrapper
           className="material-icons md-48"
           title="Next"
-          onClick={() => updateRepoContributors({ name: selectedRepo, page: selectedPage + 1 })}
+          onClick={
+            () => updateRepoContributors({
+              name: selectedRepo,
+              page: selectedPage + 1
+            })}
         >
           keyboard_arrow_right
         </NavIconWrapper>
