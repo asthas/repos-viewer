@@ -10,6 +10,9 @@ const actionTypes = {
   updateRepoInfo: 'UPDATE_REPO_INFO',
   updateRepoInfoSuccess: 'UPDATE_REPO_INFO_SUCCESS',
   updateRepoInfoFailure: 'UPDATE_REPO_INFO_FAILURE',
+  updateRepoContributors: 'UPDATE_REPO_CONTRIBUTORS',
+  updateRepoContributorsSuccess: 'UPDATE_REPO_CONTRIBUTORS_SUCCESS',
+  updateRepoContributorsFailure: 'UPDATE_REPO_CONTRIBUTORS_FAILURE',
 }
 
 export const actions = {
@@ -50,6 +53,21 @@ export const actions = {
 
   updateRepoInfoFailure: (payload) => ({
     type: actionTypes.updateRepoInfoFailure,
+    payload
+  }),
+
+  updateRepoContributors: (payload) => ({
+    type: actionTypes.updateRepoContributors,
+    payload
+  }),
+
+  updateRepoContributorsSuccess: (payload) => ({
+    type: actionTypes.updateRepoContributorsSuccess,
+    payload
+  }),
+
+  updateRepoContributorsFailure: (payload) => ({
+    type: actionTypes.updateRepoContributorsFailure,
     payload
   }),
 }
@@ -116,6 +134,69 @@ const actionHandler = {
   ) => ({
     ...state,
     errorMessage: action.payload
+  }),
+
+  [actionTypes.updateRepoContributors]: (
+    state,
+    { payload: { name, page } }
+  ) => ({
+    ...state,
+    repos: {
+      ...state.repos,
+      [name]: {
+        ...state.repos[name],
+        contributors: {
+          selectedPage: page,
+          ...state.repos[name].contributors,
+          [page]: {
+            loaded: false,
+            loading: true,
+          }
+        },
+      }
+    }
+  }),
+
+  [actionTypes.updateRepoContributorsSuccess]: (
+    state,
+    { payload: { name, page, contributors } }
+  ) => ({
+    ...state,
+    repos: {
+      ...state.repos,
+      [name]: {
+        ...state.repos[name],
+        contributors: {
+          ...state.repos[name].contributors,
+          [page]: {
+            loaded: false,
+            loading: true,
+            list: contributors,
+          }
+        },
+      }
+    }
+  }),
+
+  [actionTypes.updateRepoContributorsFailure]: (
+    state,
+    { payload: { name, page, errorMessage } }
+  ) => ({
+    ...state,
+    repos: {
+      ...state.repos,
+      [name]: {
+        ...state.repos[name],
+        contributors: {
+          ...state.repos[name].contributors,
+          [page]: {
+            loaded: false,
+            loading: false,
+          },
+        },
+      }
+    },
+    errorMessage,
   })
 }
 
