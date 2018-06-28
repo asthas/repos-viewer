@@ -21,6 +21,10 @@ Use yarn start to start the app on port 3000
 yarn start
 ```
 
+## Access live
+
+View the app live deployed on [now](https://files-umlwfxdcui.now.sh/).
+
 ### Configuration
 
 By default the project lists facebook's repos, you can update the default organisation by overriding the `selectedOrg` field in the [initalState](src/store/initialState.js) file to any other valid github organisation.
