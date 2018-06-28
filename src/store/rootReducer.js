@@ -97,21 +97,22 @@ const actionHandler = {
 
   [actionTypes.updateRepoContributors]: (
     state,
-    { payload: { name, page } }
+    { payload: { repo, page } }
   ) => ({
     ...state,
     repos: {
       ...state.repos,
-      [name]: {
-        ...state.repos[name],
+      [repo]: {
+        ...state.repos[repo],
         contributors: {
-          ...state.repos[name].contributors,
+          ...state.repos[repo].contributors,
           selectedPage: page,
           pages: {
-            ...state.repos[name].contributors.pages,
+            ...state.repos[repo].contributors.pages,
             [page]: {
               loaded: false,
               loading: true,
+              list: [],
             }
           }
         },
@@ -121,21 +122,21 @@ const actionHandler = {
 
   [actionTypes.updateRepoContributorsSuccess]: (
     state,
-    { payload: { name, page, contributors } }
+    { payload: { repo, page, contributors } }
   ) => ({
     ...state,
     repos: {
       ...state.repos,
-      [name]: {
-        ...state.repos[name],
+      [repo]: {
+        ...state.repos[repo],
         contributors: {
-          ...state.repos[name].contributors,
+          ...state.repos[repo].contributors,
           selectedPage: page,
           pages: {
-            ...state.repos[name].contributors.pages,
+            ...state.repos[repo].contributors.pages,
             [page]: {
-              loaded: false,
-              loading: true,
+              loaded: true,
+              loading: false,
               list: contributors,
             }
           }
@@ -146,21 +147,21 @@ const actionHandler = {
 
   [actionTypes.updateRepoContributorsFailure]: (
     state,
-    { payload: { name, page, errorMessage } }
+    { payload: { repo, page, errorMessage } }
   ) => ({
     ...state,
     repos: {
       ...state.repos,
-      [name]: {
-        ...state.repos[name],
+      [repo]: {
+        ...state.repos[repo],
         contributors: {
-          ...state.repos[name].contributors,
-          selectedPage: page,
+          ...state.repos[repo].contributors,
           pages: {
-            ...state.repos[name].contributors.pages,
+            ...state.repos[repo].contributors.pages,
             [page]: {
               loaded: false,
               loading: false,
+              list: [],
             }
           }
         },

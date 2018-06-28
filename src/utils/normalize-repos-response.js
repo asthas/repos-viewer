@@ -9,8 +9,6 @@ const normalizeReposResponse = repos => repos
     description: repo.description,
     url: repo.homepage || repo.html_url,
     contributors: {
-      loaded: false,
-      loading: false,
       selectedPage: 1,
       pages: {},
     }

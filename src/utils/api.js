@@ -2,6 +2,7 @@ import { ajax } from 'rxjs/ajax';
 import { of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import normalizeReposResponse from './normalize-repos-response';
+import normalizeContributorsRepsonse from './normalize-contributors-response';
 
 const baseUrl = 'https://api.github.com';
 
@@ -22,6 +23,9 @@ export default class Api {
   static contributors({ org, repo, page }) {
     return fetchData(
       `${baseUrl}/repos/${org}/${repo}/contributors?page=${page}&per_page=10`
-    ).catch(() => of(null))
+    ).pipe(
+      map(normalizeContributorsRepsonse),
+      catchError(() => of(null))
+    )
   }
 }

@@ -19,6 +19,9 @@ const ContributorsContainer = styled.div`
   padding: 16px;
   flex-direction: row;
   margin-top: 16px;
+  min-height: 148px;
+  justify-content: center;
+  align-items: center;
 `;
 
 const NavWrapper = styled.div`
@@ -36,63 +39,122 @@ const NavIconWrapper = styled.i`
   margin-right: 8px;
 `;
 
-const Contributors = ({
-  selectedRepo,
-  // selectedPage,
-  // contributors,
-  updateRepoContributors
-}) => {
+const InfoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
 
-  const selectedPage = 1;
-  const list = [
-    {
-      "name": "Contrib 9",
-      "avatar": "https://avatars2.githubusercontent.com/u/7947934?v=4"
-    },
-    {
-      "name": "Contrib 10",
-      "avatar": "https://avatars2.githubusercontent.com/u/7947934?v=4"
+class Contributors extends React.Component {
+  loadDataIfNeeded() {
+    const {
+      selectedRepo,
+      selectedPage,
+      contributors: {
+        loaded,
+        loading,
+      },
+      updateRepoContributors
+    } = this.props;
+
+    if (!loaded && !loading) {
+      updateRepoContributors({
+        repo: selectedRepo,
+        page: selectedPage,
+      });
     }
-  ];
+  }
 
-  return (
-    <Wrapper>
-      <TitleWrapper>Contributors</TitleWrapper>
-      <ContributorsContainer>
-        {list.map(contributor => (
-          <Contributor
-            {...contributor}
-            key={contributor.avatar}
-          />
-        ))}
-      </ContributorsContainer>
-      <NavWrapper>
-        <NavIconWrapper
-          title="Previous"
-          className="material-icons md-48"
-          onClick={
-            () => selectedPage > 1 && updateRepoContributors({
-              name: selectedRepo,
-              page: selectedPage - 1
-            })
-          }
-        >
-          keyboard_arrow_left
-        </NavIconWrapper>
-        <NavIconWrapper
-          className="material-icons md-48"
-          title="Next"
-          onClick={
-            () => updateRepoContributors({
-              name: selectedRepo,
-              page: selectedPage + 1
-            })}
-        >
-          keyboard_arrow_right
-        </NavIconWrapper>
-      </NavWrapper>
-    </Wrapper>
-  );
-};
+  renderList(list) {
+    return list.map(contributor => (
+      <Contributor
+        {...contributor}
+        key={contributor.id}
+      />
+    ));
+  }
+
+  renderLoading() {
+    return (
+      <InfoWrapper>
+        Loading "contributors"
+      </InfoWrapper>
+    )
+  }
+
+  renderNoResults() {
+    return (
+      <InfoWrapper>
+        No contributors found
+      </InfoWrapper>
+    )
+  }
+
+  renderView(loading, loaded, list) {
+    if (loading) {
+      return this.renderLoading();
+    }
+    if (loaded && list.length === 0) {
+      return this.renderNoResults();
+    }
+    return this.renderList(list);
+  }
+
+  componentDidMount() {
+    this.loadDataIfNeeded();
+  }
+
+  componentDidUpdate() {
+    this.loadDataIfNeeded();
+  }
+
+  render() {
+    const {
+      selectedRepo,
+      selectedPage,
+      contributors: {
+        loading,
+        loaded,
+        list,
+      },
+      updateRepoContributors,
+    } = this.props;
+
+    return (
+      <Wrapper>
+        <TitleWrapper>Contributors</TitleWrapper>
+        <ContributorsContainer>
+          {this.renderView(loading, loaded, list)}
+        </ContributorsContainer>
+        <NavWrapper>
+          <NavIconWrapper
+            title="Previous"
+            className="material-icons md-48"
+            onClick={
+              () => selectedPage > 1 && updateRepoContributors({
+                repo: selectedRepo,
+                page: selectedPage - 1
+              })
+            }
+          >
+            keyboard_arrow_left
+          </NavIconWrapper>
+          <NavIconWrapper
+            className="material-icons md-48"
+            title="Next"
+            onClick={
+              () => updateRepoContributors({
+                repo: selectedRepo,
+                page: selectedPage + 1
+              })}
+          >
+            keyboard_arrow_right
+          </NavIconWrapper>
+        </NavWrapper>
+      </Wrapper>
+    );
+  }
+}
 
 export default Contributors;

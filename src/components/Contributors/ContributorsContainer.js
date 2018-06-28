@@ -4,15 +4,19 @@ import Contributors from './Contributors';
 
 const mapStateToProps = (state) => {
   const { repos, selectedRepo } = state;
-  const contributors = repos[selectedRepo].contributors || {};
-  const selectedPage = contributors.selectedPage || 1;
-  const contributorsInfo = contributors.pages[selectedPage] || {};
+  const { contributors } = repos[selectedRepo];
+  const { selectedPage, pages } = contributors;
+  const contributorsInfo = pages[selectedPage] || {
+    loading: false,
+    loaded: false,
+    list: []
+  };
 
   return {
     selectedRepo,
     selectedPage,
     contributors: contributorsInfo,
-  }
+  };
 }
 
 const mapDispatchToProps = {
