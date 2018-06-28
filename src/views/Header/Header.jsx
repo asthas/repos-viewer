@@ -5,11 +5,12 @@ import SearchContainer from '../../components/Search';
 
 const Wrapper = styled.div`
   height: 64px;
-  background-color: '#e5ece6';
+  background-color: #0336FF;
   position: relative;
   display: flex;
   align-items: center;
   padding: 0 48px;
+  color: white;
   box-shadow: 0 2px 4px 0 rgba(27, 20, 100, 0.3);
 `;
 

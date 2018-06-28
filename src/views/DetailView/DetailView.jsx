@@ -49,9 +49,10 @@ const InfoListWrapper = styled.div`
 
 const InfoTagWrapper = styled.div`
   margin: 8px 4px;
-  padding: 4px;
+  padding: 8px;
   background-color: #f6f8fa;
-  border: 1px solid transparent;
+  border: 1px solid #0336FF;
+  border-radius: 20px;
   font-size: 0.8em;
 `;
 
@@ -103,7 +104,7 @@ const DetailView = ({
         <InfoListWrapper>
           {infoList.map(({ title, value }) => (
             <InfoTagWrapper key={title}>
-              {`${title}: ${value}`}
+              <strong>{`${title}: `}</strong>{value}
             </InfoTagWrapper>
           ))}
         </InfoListWrapper>

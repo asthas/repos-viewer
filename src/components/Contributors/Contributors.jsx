@@ -9,6 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const TitleWrapper = styled.div`
+  color: #0336FF;
   font-size: 1.17em;
   font-weight: bold;
 `;

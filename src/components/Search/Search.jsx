@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   margin-left: 24px;
   display flex;
   position: relative;
-  color: #000;
+  color: white;
   height: 48px;
 `;
 
@@ -17,7 +17,7 @@ const InputWrapper = styled.input`
 `;
 
 const SearchIconWrapper = styled.i`
-  color: black;
+  color: white;
   align-items: center;
   justify-content: center;
   display: flex;

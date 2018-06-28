@@ -3,15 +3,15 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;
-  color: #5f6368;
+  color: #0336FF;
   align-items: center;
   max-width: 240px;
   cursor: pointer;
   padding: 12px;
   min-height: 32px;
   &:hover, &:active, &.active {
-    color: #202124;
-    background-color: #F5F5F5;
+    color: white;
+    background-color: #FF0266;
   }
 `;
 
