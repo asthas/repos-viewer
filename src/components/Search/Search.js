@@ -25,6 +25,7 @@ const SearchIconWrapper = styled.i`
 `;
 
 const Search = ({
+  searchTerm,
   updateSearchTerm
 }) => (
   <Wrapper>
@@ -37,6 +38,7 @@ const Search = ({
       type="search"
       placeholder="Search Transactions"
       onChange={(e) => updateSearchTerm(e.target.value)}
+      value={searchTerm}
     />
   </Wrapper>
 );

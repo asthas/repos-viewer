@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import initialState from './initialState';
 
 const actionTypes = {
@@ -32,6 +31,11 @@ export const actions = {
   updateReposFailure: (payload) => ({
     type: actionTypes.updateReposFailure,
     payload
+  }),
+
+  updateSelectedRepo: (payload) => ({
+    type: actionTypes.updateSelectedRepo,
+    payload,
   }),
 
   updateRepoInfo: (payload) => ({
