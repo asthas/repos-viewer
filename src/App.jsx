@@ -12,7 +12,6 @@ const Wrapper = styled.div`
 
 const ContentWrapper = styled.div`
   display: flex;
-  background-color: orange;
   height: 100%;
 `
 

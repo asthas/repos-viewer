@@ -13,8 +13,9 @@ const Wrapper = styled.div`
   box-shadow: 0 2px 4px 0 rgba(27, 20, 100, 0.3);
 `;
 
-const OrgWrapper = styled.h2`
+const OrgWrapper = styled.span`
   flex: 1;
+  font-size: 1.5em;
 `;
 
 const Header = ({

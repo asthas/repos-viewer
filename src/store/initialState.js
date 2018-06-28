@@ -1,5 +1,5 @@
 const mockRepos = {
-  'sparky-js': { id: 0, name: 'sparky-js', watchers: 13 },
+  'sparky-js-with-a-very-long-name': { id: 0, name: 'sparky-js-with-a-very-long-name', watchers: 13 },
   'web-init': { id: 1, name: 'web-init', watchers: 26 },
   'astha.me': { id: 2, name: 'astha.me', watchers: 39 },
   code: { id: 3, name: 'code', watchers: 52 },

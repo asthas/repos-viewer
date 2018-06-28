@@ -2,14 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  background: pink;
-  width: 100%;
-  min-height: 24px;
-  font-size: 24px;
+  display: flex;
+  color: #5f6368;
+  align-items: center;
+  max-width: 240px;
   cursor: pointer;
   padding: 12px;
-  border: 1px solid #ccc;
-  max-width: 240px;
+  min-height: 32px;
+  &:hover, &:active, &.active {
+    color: #202124;
+    background-color: #F5F5F5;
+  }
+`;
+
+const TextWrapper = styled.div`
+  font-size: 1.17em;
+  min-width: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -17,11 +25,11 @@ const Wrapper = styled.div`
 
 const RepoListItem = ({
   name,
-  selectedRepo,
+  isSelected,
   onClick
 }) => (
-  <Wrapper onClick={onClick}>
-    {name}
+  <Wrapper className={isSelected ? 'active' : ''} onClick={onClick}>
+    <TextWrapper>{name}</TextWrapper>
   </Wrapper>
 );
 

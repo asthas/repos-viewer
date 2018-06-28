@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: blue;
+  width: 100%;
 `;
 
 const RepoList = ({
@@ -21,7 +21,7 @@ const RepoList = ({
         <RepoListItem
           {...repo}
           key={repo.id}
-          selectedRepo={selectedRepo}
+          isSelected={repo.name === selectedRepo}
           onClick={() => updateSelectedRepo(repo.name)}
         />
       )
