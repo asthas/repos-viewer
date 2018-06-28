@@ -98,7 +98,7 @@ const DetailView = ({
     <Wrapper>
       <WrapperHeader>
         <InfoWrapper>
-          <TitleWrapper><a href={url}>{selectedRepo}</a></TitleWrapper>
+          <TitleWrapper><a target="_blank" href={url}>{selectedRepo}</a></TitleWrapper>
           <DescriptionWrapper>{description}</DescriptionWrapper>
         </InfoWrapper>
         <InfoListWrapper>

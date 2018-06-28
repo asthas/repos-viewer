@@ -2,11 +2,13 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const Wrapper = styled.a`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-right: 12px;
+  text-decoration: none;
+  color: black;
 `;
 
 const AvatarWrapper = styled.img`
@@ -19,7 +21,7 @@ const Contributor = ({
   name,
   avatar
 }) => (
-  <Wrapper>
+  <Wrapper href={`https://github.com/${name}`} target="_blank">
     <AvatarWrapper src={avatar} alt={`${name}'s profile photo`} />
     <div>{name}</div>
   </Wrapper>
