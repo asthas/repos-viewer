@@ -23,7 +23,7 @@ yarn start
 
 ## Access live
 
-View the app live deployed on [now](https://files-umlwfxdcui.now.sh/).
+View the app live deployed on [now](https://files-eazhdznxmd.now.sh/).
 
 ### Configuration
 
