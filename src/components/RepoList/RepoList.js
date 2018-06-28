@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const LoadingWrapper = Wrapper.extend`
+const CenteredWrapper = Wrapper.extend`
   align-items: center;
   justify-content: center;
 `
@@ -31,14 +31,21 @@ class RepoList extends React.Component {
     const {
       repos,
       selectedRepo,
-      updateSelectedRepo
+      updateSelectedRepo,
+      totalRepos
     } = this.props;
 
-    if (repos.length === 0) {
+    if (repos.length === 0 && totalRepos > 0) {
       return (
-        <LoadingWrapper>
+        <CenteredWrapper>
+          No repos found
+        </CenteredWrapper>
+      )
+    } else if (repos.length === 0) {
+      return (
+        <CenteredWrapper>
           Loading "repos"
-        </LoadingWrapper>
+        </CenteredWrapper>
       );
     }
 

@@ -8,6 +8,7 @@ const mapStateToProps = (state) => ({
   selectedOrg: state.selectedOrg,
   selectedRepo: state.selectedRepo,
   repos: normalizeRepos(state.repos, state.searchTerm, 'watchers'),
+  totalRepos: Object.keys(state.repos).length,
 });
 
 const mapDispatchToProps = {
