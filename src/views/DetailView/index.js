@@ -1,3 +1,3 @@
-import DetailView from './DetailView';
+import DetailViewContainer from './DetailViewContainer';
 
-export default DetailView;
+export default DetailViewContainer;
