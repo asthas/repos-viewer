@@ -1,6 +1,6 @@
 import initialState from './initialState';
 
-const actionTypes = {
+export const actionTypes = {
   updateSearchTerm: 'UPDATE_SEARCH_TERM',
   updateOrg: 'UPDATE_ORG',
   updateRepos: 'UPDATE_REPOS',

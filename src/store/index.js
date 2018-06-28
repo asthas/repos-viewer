@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { IS_PRODUCTION } from '../config/constants';
 import rootReducer from './rootReducer';
+import rootEpic from './rootEpic';
 
 const epicMiddleware = createEpicMiddleware();
 const middlewares = [
@@ -14,5 +15,7 @@ const enhanceMiddleware = IS_PRODUCTION ?
   composeWithDevTools(applyMiddleware(...middlewares));
 
 const store = createStore(rootReducer, enhanceMiddleware);
+
+epicMiddleware.run(rootEpic);
 
 export default store;

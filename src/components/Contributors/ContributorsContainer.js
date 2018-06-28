@@ -4,10 +4,9 @@ import Contributors from './Contributors';
 
 const mapStateToProps = (state) => {
   const { repos, selectedRepo } = state;
-  const { contributors } = repos[selectedRepo];
-
-  const { selectedPage } = contributors;
-  const contributorsInfo = contributors[selectedPage];
+  const contributors = repos[selectedRepo].contributors || {};
+  const selectedPage = contributors.selectedPage || 1;
+  const contributorsInfo = contributors[selectedPage] || {};
 
   return {
     selectedRepo,

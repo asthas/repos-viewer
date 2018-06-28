@@ -5,11 +5,13 @@ import normalizeRepos from '../../utils/normalize-repos';
 import RepoList from './RepoList';
 
 const mapStateToProps = (state) => ({
+  selectedOrg: state.selectedOrg,
   selectedRepo: state.selectedRepo,
   repos: normalizeRepos(state.repos, state.searchTerm, 'watchers'),
 });
 
 const mapDispatchToProps = {
+  updateOrg: actions.updateOrg,
   updateSelectedRepo: actions.updateSelectedRepo,
 };
 
